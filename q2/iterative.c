@@ -28,20 +28,19 @@ static double diff_in_second(struct timespec t1, struct timespec t2)
 }
 int main()
 {
-     struct timespec start, end;
+   struct timespec start, end;
     double cpu_time;
-    char str[]="cdefjmnpsv";
+    char str[][30]={"   ","!!#$)+/","023589",":<=@","CDEFJMNPSV","[]^_","cdefjmnpsv","  !!235===DDDEcccggssv"};
     char c;
-    printf("The sorted character array is %s \n",str);
-    printf("Enter the search character : ");
-    scanf("%c",&c);
-    //c = getche();
-    clock_gettime(CLOCK_REALTIME, &start);
-    assert(printf("%c\n",smallest_character(str, c)));
-    clock_gettime(CLOCK_REALTIME, &end);
-    cpu_time = diff_in_second(start, end);
-
-    printf("\nexecution time of iterative : %lf sec\n", cpu_time);
-    fflush(stdin);
-    return 0;
+    for(int j=0;j<7;++j){
+      printf("The sorted character array is %s \n",str[j]);
+      printf("Enter the search character : ");
+      scanf("%c",&c);
+      //c = getche();
+      clock_gettime(CLOCK_REALTIME, &start);
+      assert(printf("%c\n",smallest_character(str[j], c)));
+      clock_gettime(CLOCK_REALTIME, &end);
+      cpu_time = diff_in_second(start, end);
+      printf("execution time of iterative : %lf sec\n\n", cpu_time);
+    }
 }
